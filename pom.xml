@@ -7,41 +7,29 @@
   <artifactId>spring-petclinic</artifactId>
   <version>1.5.1</version>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-			  <groupId>org.apache.maven.surefire</groupId>
-			  <artifactId>surefire</artifactId>
-			  <version>3.0.0-M4</version>
-			  <type>pom</type>
-			  <scope>import</scope>
-			</dependency>
-			<dependency>
-			    <groupId>org.apache.maven.surefire</groupId>
-			    <artifactId>surefire-junit4</artifactId>
-			    <version>3.0.0-M4</version>
-			    <type>pom</type>
-			  	<scope>import</scope>
-			</dependency>
-			<dependency>
-				<!-- Import dependency management from Spring Boot -->
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.5.4.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-
-		</dependencies>
-	</dependencyManagement>
-	
-
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.5.4.RELEASE</version>
   </parent>
+  
   <name>petclinic</name>
+  
+  	<dependencyManagement>
+		<dependencies>
+			<dependency>
+			  <groupId>org.apache.maven.surefire</groupId>
+			  <artifactId>surefire</artifactId>
+			  <version>3.0.0-M4</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.maven.surefire</groupId>
+			    <artifactId>surefire-junit4</artifactId>
+			    <version>3.0.0-M4</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 
   <properties>
 
