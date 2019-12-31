@@ -37,7 +37,7 @@
   <dependencies>
   	<dependency>
 	  <groupId>org.apache.maven.surefire</groupId>
-	  <artifactId>surefire</artifactId>
+	  <artifactId>surefire-api</artifactId>
 	  <version>3.0.0-M4</version>
 	</dependency>
 	<dependency>
@@ -131,6 +131,7 @@
 
   <build>
     <plugins>
+    
     <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-surefire-plugin</artifactId>
@@ -146,6 +147,9 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <excludeArtifactIds>maven-surefire-plugin,surefire-junit4</excludeArtifactIds>
+        </configuration>
         <executions>
           <execution>
             <!-- Spring Boot Actuator displays build-related information 
