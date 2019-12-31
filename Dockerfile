@@ -1,5 +1,5 @@
 
-FROM maven:latest
+FROM timo0/docker-oraclejdk8-maven
 
 RUN mkdir -p /deploy/application
 
