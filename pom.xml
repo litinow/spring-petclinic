@@ -147,10 +147,29 @@
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-surefire-plugin</artifactId>
 			    <version>${surefireMavenPluginVersion}</version>
+			    <dependencies>
+			        <dependency>
+			            <groupId>org.junit.jupiter</groupId>
+			            <artifactId>junit-jupiter-engine</artifactId>
+			            <version>5.4.0</version>
+			        </dependency>
+			    </dependencies>
             </plugin>
         </plugins>
   </pluginManagement>
     <plugins>
+    	<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-surefire-plugin</artifactId>
+		    <version>${surefireMavenPluginVersion}</version>
+		    <dependencies>
+		        <dependency>
+		            <groupId>org.junit.jupiter</groupId>
+		            <artifactId>junit-jupiter-engine</artifactId>
+		            <version>5.4.0</version>
+		        </dependency>
+		    </dependencies>
+           </plugin>
 	    <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-compiler-plugin</artifactId>
