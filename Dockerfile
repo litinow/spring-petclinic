@@ -1,5 +1,5 @@
 
-FROM maven:3.5.3-jdk-8-alpine
+FROM maven:3.5.3-jdk-10
 
 RUN mkdir -p /deploy/application
 
