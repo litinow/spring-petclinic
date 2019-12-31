@@ -1,7 +1,7 @@
 
 FROM maven:3.5-jdk-8
 
-RUN sudo aptitude forbid-version openjdk-8-jre-headless \
+RUN apt-get update && apt-get upgrade openjdk-8-jdk -y \
 	mkdir -p /deploy/application
 
 VOLUME ["/deploy/application"]
