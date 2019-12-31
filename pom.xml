@@ -6,20 +6,14 @@
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
   <version>1.5.1</version>
-
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.4.RELEASE</version>
-  </parent>
   
-  <name>petclinic</name>
-  
-
   <properties>
 
     <!-- Generic properties -->
     <java.version>1.8</java.version>
+    <java.source>1.8</java.source>
+    <maven.compiler.source>1.8</maven.compiler.source>
+   <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -31,20 +25,37 @@
     <thymeleaf.version>3.0.6.RELEASE</thymeleaf.version>
     <cobertura.version>2.7</cobertura.version>
    <docker.image.prefix>petclinic</docker.image.prefix>
+   
+   <surefire.version>3.0.0-M4</surefire.version>
+    <surefireMavenPluginVersion>3.0.0-M4</surefireMavenPluginVersion>
 
   </properties>
 
+  <dependencyManagement>
+		<dependencies>
+			<dependency>
+			    <groupId>org.apache.maven.surefire</groupId>
+			    <artifactId>surefire</artifactId>
+			    <version>${surefireVersion}</version>
+			    <scope>import</scope>
+			</dependency>
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.5.4.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	
+  <name>petclinic</name>
+
+  
+
   <dependencies>
-  	<dependency>
-	  <groupId>org.apache.maven.surefire</groupId>
-	  <artifactId>surefire-api</artifactId>
-	  <version>3.0.0-M4</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.apache.maven.surefire</groupId>
-	    <artifactId>surefire-junit4</artifactId>
-	    <version>3.0.0-M4</version>
-	</dependency>
     <!-- Spring and Spring Boot dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -130,26 +141,28 @@
   </dependencies>
 
   <build>
+  <pluginManagement>
+        <plugins>
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <version>${surefireMavenPluginVersion}</version>
+            </plugin>
+        </plugins>
+  </pluginManagement>
     <plugins>
-    
-    <plugin>
+	    <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-surefire-plugin</artifactId>
-	    <version>3.0.0-M4</version>
-	    <dependencies>
-	      <dependency>
-		    <groupId>org.apache.maven.surefire</groupId>
-		    <artifactId>surefire-junit4</artifactId>
-		    <version>3.0.0-M4</version>
-		</dependency>
-	    </dependencies>
+	    <artifactId>maven-compiler-plugin</artifactId>
+	    <version>3.2</version> <!-- or whatever current version -->
+	    <configuration>
+	      <source>1.8</source>
+	      <target>1.8</target>
+	    </configuration>
 	  </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <excludeArtifactIds>maven-surefire-plugin,surefire-junit4</excludeArtifactIds>
-        </configuration>
         <executions>
           <execution>
             <!-- Spring Boot Actuator displays build-related information 
