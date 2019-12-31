@@ -1,7 +1,8 @@
 
-FROM timo0/docker-oraclejdk8-maven
+FROM maven:3.5-jdk-8
 
-RUN mkdir -p /deploy/application
+RUN sudo aptitude forbid-version openjdk-8-jre-headless \
+	mkdir -p /deploy/application
 
 VOLUME ["/deploy/application"]
 
